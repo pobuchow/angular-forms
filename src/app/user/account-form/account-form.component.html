@@ -1,14 +1,44 @@
-<div class="container is-fluid">
-  <p class="title">Account settings</p>
-  <form action="">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input id= "name" class="input" type="text" placeholder="Name" />
-      </div>
+<p-card>
+  <p-header>
+    <h3>Account Settings</h3>
+  </p-header>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12 p-md-6">
+      <label for="firstname">Firstname</label>
+      <input id="firstname" type="text" pInputText>
     </div>
-    <div class="buttons">
-      <button class="button is-primary">Save</button>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="lastname">Lastname</label>
+      <input id="lastname" type="text" pInputText>
     </div>
-  </form>
-</div>
+    <div class="p-field p-col-12">
+      <label for="email">Email</label>
+      <input id="email" type="text" pInputText>
+    </div>
+    <div class="p-field p-col-12">
+      <label for="password">Password</label>
+      <input id="password" type="password" pPassword />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="birthday">Birthday</label>
+      <p-calendar id="birthday" dateFormat="dd.mm.yy"></p-calendar>
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="gender">Gender</label>
+      <p-selectButton id="gender" [options]="[
+          {name: 'Male'},
+          {name: 'Female'},
+          {name: 'Other'}]" optionLabel="name"></p-selectButton>
+    </div>
+    <div class="p-field p-col-12">
+      <label for="about">About me</label>
+      <textarea id="about" type="text" rows="4" pInputTextarea></textarea>
+    </div>
+    <div class="p-field p-col-12">
+      <p-checkbox id="private-account" [binary]="true" label="Make my profile private"></p-checkbox>
+    </div>
+  </div>
+  <p-footer>
+    <button pButton type="button" label="Save"></button>
+  </p-footer>
+</p-card>
