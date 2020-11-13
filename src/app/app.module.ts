@@ -11,6 +11,7 @@ import {PasswordModule} from 'primeng/password';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {CalendarModule} from 'primeng/calendar';
 import {CheckboxModule} from 'primeng/checkbox';
+import {MessageModule} from 'primeng/message';
 
 import { AppComponent } from './app.component';
 import { AccountFormComponent } from './user/account-form/account-form.component';
@@ -31,7 +32,8 @@ import { AccountFormComponent } from './user/account-form/account-form.component
     PasswordModule,
     SelectButtonModule,
     CalendarModule,
-    CheckboxModule
+    CheckboxModule,
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,7 @@
+.field-validation-error {
+  border: 2px solid tomato;
+}
+.select-field-validation-error {
+  border-radius: 3px;
+  border: 2px solid tomato;
+}

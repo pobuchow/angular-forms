@@ -1,5 +1,5 @@
 <p-card header="Account Settings">
-  <form #form="ngForm">
+  <form #form="ngForm" id="account-settings-form" (ngSubmit)="onSubmit(form)">
     <div class="p-fluid p-formgrid p-grid">
       <div class="p-field p-col-12 p-md-6">
         <label for="firstname">Firstname</label>
@@ -8,7 +8,16 @@
           name="firstname" 
           type="text" 
           pInputText 
-          [(ngModel)]="accountSettings.firstname"/>
+          [(ngModel)]="accountSettings.firstname"
+          required
+          #firstNameField="ngModel"
+          [class.field-validation-error]="form.submitted && firstNameField.invalid"
+        />
+          <p-message 
+            [hidden]="!form.submitted || firstNameField.valid" 
+            severity="error"
+            text="Please enter your first name">
+          </p-message>
       </div>
       <div class="p-field p-col-12 p-md-6">
         <label for="lastname">Lastname</label>
@@ -17,7 +26,16 @@
           name="lastname" 
           type="text" 
           pInputText 
-          [(ngModel)]="accountSettings.lastname"/>
+          [(ngModel)]="accountSettings.lastname"
+          required
+          #lastNameField="ngModel"
+          [class.field-validation-error]="form.submitted && lastNameField.invalid"
+        />
+        <p-message 
+            [hidden]="!form.submitted || lastNameField.valid" 
+            severity="error"
+            text="Please enter your last name">
+        </p-message>
       </div>
       <div class="p-field p-col-12">
         <label for="email">Email</label>
@@ -26,7 +44,16 @@
           name="email" 
           type="text" 
           pInputText 
-          [(ngModel)]="accountSettings.email"/>
+          [(ngModel)]="accountSettings.email"
+          required
+          #emailField="ngModel"
+          [class.field-validation-error]="form.submitted && emailField.invalid"
+        />
+        <p-message 
+            [hidden]="!form.submitted || emailField.valid" 
+            severity="error"
+            text="Please enter your email">
+        </p-message>
       </div>
       <div class="p-field p-col-12">
         <label for="password">Password</label>
@@ -35,29 +62,58 @@
           name="password" 
           type="password" 
           pPassword 
-          [(ngModel)]="accountSettings.password"/>
+          [(ngModel)]="accountSettings.password"
+          required
+          #passwordField="ngModel"
+          [class.field-validation-error]="form.submitted && passwordField.invalid"
+        />
+        <p-message 
+            [hidden]="!form.submitted || passwordField.valid" 
+            severity="error"
+            text="Please enter your password">
+        </p-message>
       </div>
       <div class="p-field p-col-12 p-md-6">
         <label for="birthday">Birthday</label>
-        <p-calendar
+        <div [class.select-field-validation-error]="form.submitted && birthdayField.invalid">
+          <p-calendar
           id="birthday" 
           name="birthday" 
           dateFormat="dd.mm.yy" 
           [monthNavigator]="true" 
           [yearNavigator]="true" 
           yearRange="1950:2020" 
-          [(ngModel)]="accountSettings.birthday">
+          [(ngModel)]="accountSettings.birthday"
+          [required]="true"
+          #birthdayField="ngModel"
+        >
         </p-calendar>
+        </div>
+        <p-message 
+            [hidden]="!form.submitted || birthdayField.valid" 
+            severity="error"
+            text="Please enter your birthday">
+        </p-message>
       </div>
       <div class="p-field p-col-12 p-md-6">
         <label for="gender">Gender</label>
-        <p-selectButton
+        <div [class.select-field-validation-error]="form.submitted && genderField.invalid">
+          <p-selectButton
           id="gender"
           name="gender"
           [options]="[{ name: 'Male' }, { name: 'Female' }, { name: 'Other' }]"
           optionLabel="name"
           [(ngModel)]="accountSettings.gender"
+          [required]="true"
+          #genderField="ngModel"
         ></p-selectButton>
+        </div>
+        <p-message 
+        [hidden]="!form.submitted || genderField.valid" 
+        severity="error"
+        text="Please enter your gender">
+    </p-message>
+        
       </div>
       <div class="p-field p-col-12">
         <label for="about">About me</label>
@@ -81,7 +137,7 @@
       </div>
     </div>
     <p-footer>
-      <button pButton type="button" label="Save"></button>
+      <button pButton type="submit" form="account-settings-form" label="Save"></button>
     </p-footer>
   </form>
 </p-card>

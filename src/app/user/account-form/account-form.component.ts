@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AccountSettings } from 'src/app/data/account-settings';
 
 @Component({
@@ -14,9 +15,10 @@ export class AccountFormComponent implements OnInit {
     password: "Cm123!",
     email: "claude@makeleke.fr",
     birthday: new Date("1973-02-18"),
-    gender: {
-      name: "Male"
-    },
+    gender: null, 
+    //{
+    //  name: "Male"
+    //},
     about: "Some notes about me...",
     privateAccount: true
   };
@@ -26,5 +28,9 @@ export class AccountFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm){
+
   }
 }
